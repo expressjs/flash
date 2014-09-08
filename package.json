@@ -1,6 +1,6 @@
 {
   "name": "flash",
-  "description": "",
+  "description": "Simple flash messages for Express",
   "version": "0.0.0",
   "author": {
     "name": "Jonathan Ong",
@@ -12,6 +12,9 @@
   "repository": "expressjs/flash",
   "dependencies": {},
   "devDependencies": {
+    "cookie-session": "1",
+    "supertest": "0",
+    "express": "4",
     "istanbul": "0",
     "mocha": "1"
   },
@@ -20,5 +23,13 @@
     "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot",
     "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter dot"
   },
-  "keywords": []
+  "keywords": [
+    "flash",
+    "messages",
+    "express"
+  ],
+  "files": [
+    "index.js",
+    "LICENSE"
+  ]
 }

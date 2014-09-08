@@ -8,6 +8,48 @@
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
+The simplest flash implementation for Express.
+
+## Usage
+
+```bash
+npm i flash
+```
+
+```js
+app.use(session()); // session middleware
+app.use(require('flash')());
+
+app.use(function (req, res) {
+  // flash a message
+  req.flash('info', 'hello!');
+  next();
+})
+```
+
+```jade
+for message in flash
+  a.alert(class='alert-' + message.type)
+    p= message.message
+```
+
+## API
+
+### req.flash([type], msg)
+
+Flash a message defaulting the `type` to `info`.
+
+### res.locals.flash
+
+An array of flash messages of the form:
+
+```json
+{
+  "type": "info",
+  "message": "message"
+}
+```
+
 [npm-image]: https://img.shields.io/npm/v/flash.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/flash
 [github-tag]: http://img.shields.io/github/tag/expressjs/flash.svg?style=flat-square
