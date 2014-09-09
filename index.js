@@ -4,7 +4,8 @@ var assert = require('assert')
 module.exports = function () {
   return function (req, res, next) {
     assert(req.session, 'a req.session is required!')
-    res.locals.flash = req.session.flash = req.session.flash || []
+    if (!Array.isArray(req.session.flash)) req.session.flash = []
+    res.locals.flash = req.session.flash
     req.flash = res.flash = push
     next()
   }
