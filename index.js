@@ -16,10 +16,17 @@ function push(type, msg) {
     msg = type
     type = 'info'
   }
-  var res = this.res || this
-  res.locals.flash.push({
-    type: type,
+  msg = {
     message: msg,
-  })
+    type: type
+  }
+  var res = this.res || this
+  var messages = res.locals.flash
+  // do not allow duplicate flash messages
+  for (var i = 0; i < messages.length; i++) {
+    var message = messages[i]
+    if (msg.type === message.type && msg.message === message.message) return this
+  }
+  messages.push(msg)
   return this
 }
