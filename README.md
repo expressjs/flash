@@ -33,6 +33,12 @@ for message in flash
     p= message.message
 ```
 
+```jade
+while message = flash.shift() // consume messages as jade reads them
+  a.alert(class='alert-' + message.type)
+    p= message.message
+```
+
 ## API
 
 ### req.flash([type], msg)
