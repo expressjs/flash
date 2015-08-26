@@ -20,7 +20,7 @@ npm i flash
 app.use(session()); // session middleware
 app.use(require('flash')());
 
-app.use(function (req, res) {
+app.use(function (req, res, next) {
   // flash a message
   req.flash('info', 'hello!');
   next();
