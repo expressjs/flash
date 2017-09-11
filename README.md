@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
   // flash a message
   req.flash('info', 'hello!');
   next();
-})
+});
 ```
 
 ```jade
