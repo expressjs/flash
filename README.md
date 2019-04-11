@@ -13,30 +13,45 @@ The simplest flash implementation for Express.
 ## Usage
 
 ```bash
-npm i flash
+npm install flash
 ```
 
 ```js
-app.use(session()); // session middleware
-app.use(require('flash')());
+let flash = require('flash')
 
-app.use(function (req, res) {
+app.use(session()) // session middleware
+app.use(flash)
+
+app.use(function (req, res, next) {
   // flash a message
-  req.flash('info', 'hello!');
-  next();
+  req.flash('info', 'hello!')
+  next()
 })
 ```
+## Using Pug
 
-```jade
+```pug
 for message in flash
   a.alert(class='alert-' + message.type)
     p= message.message
 ```
 
-```jade
-while message = flash.shift() // consume messages as jade reads them
+Or
+
+```pug
+while message = flash.shift() // consume messages as pug reads them
   a.alert(class='alert-' + message.type)
     p= message.message
+```
+
+## Using Nunjucks
+
+```nunjucks
+  {% set data = flash.shift() %}
+
+  <div class="card">
+    <p class="text"><strong>{{data.type}}:</strong> {{ data.message }}</p>
+  </div>
 ```
 
 ## API
