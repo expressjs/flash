@@ -29,7 +29,10 @@
     "express"
   ],
   "files": [
-    "index.js",
+    "lib/",
+    "lib/index.js",
     "LICENSE"
-  ]
+  ],
+  "main": "./index.js",
+  "typings": "./index.d.ts"
 }
