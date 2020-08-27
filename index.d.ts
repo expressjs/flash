@@ -4,6 +4,7 @@ declare namespace Express {
     export interface Request {
         flash(): { [key: string]: string[]; };
         flash(): any;
+        flash(): any[];
     }
 }
 // Declare a new module flash
